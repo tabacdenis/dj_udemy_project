@@ -1,3 +1,6 @@
+from os import getenv
+from dotenv import load_dotenv
+load_dotenv()
 """
 Django settings for dj_udemy_project project.
 
@@ -20,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dj3456345ango-i34563nsecure-s6z3456#ktxwx$w=s*7(po!+6iir4564mb8lf5j$-%r8()e=hchoy941vo'
+SECRET_KEY = getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
