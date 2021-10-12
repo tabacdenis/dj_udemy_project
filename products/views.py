@@ -1,5 +1,6 @@
 from django.http import HttpRequest
 from django.shortcuts import render
+from products.models import ProductCategory, Product
 
 
 def index(request: HttpRequest):
@@ -11,23 +12,9 @@ def index(request: HttpRequest):
 
 def products(request: HttpRequest):
     context = {
-        "title": "Store - Каталог"
+        "title": "Store - Каталог",
+        "categories": ProductCategory.objects.all(),
+        "products": Product.objects.all(),
     }
     return render(request, 'products/products.html', context)
 
-
-def test_context(request: HttpRequest):
-    context = {
-        "title": "Test",
-        "header": "Test Header",
-        "username": "Test Username",
-        "products": [
-            {'name': 'Худи черного цвета с монограммами adidas Originals', 'price': 6090.00},
-            {'name': 'Синяя куртка The North Face', 'price': 23725.00},
-            {'name': 'Коричневый спортивный oversized-топ ASOS DESIGN', 'price': 3390.00},
-        ],
-        "products_of_promotions": [
-            {'name': 'Черный рюкзак Nike Heritage', 'price': 2340.00},
-        ]
-    }
-    return render(request, 'products/test_context.html', context)
